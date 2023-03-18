@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.dao.BookDao">
+    <select id="selectAllBooks" resultType="Book">
+        select * from Book
+    </select>
+
+    <select id="selectAllBooksByType" resultType="Book">
+        select * from Book where id=#{type}
+    </select>
+
+    <update id="updateBook">
+        update book set title=#{title},author=#{author},infor=#{infor},genre=#{genre},childGenre=#{childGenre},finalState=#{finalState},newChapter=#{newChapter},bookImg=#{bookImg},bookSrc=#{bookSrc},numOfRead=#{numOfRead} where bookId=#{bookId}
+    </update>
+
+    <delete id="deleteBook">
+        delete from book where bookId=#{id}
+    </delete>
+    <insert id="insertBook">
+       insert into book(bookId,title,author,infor,genre,childGenre,finalState,newChapter,bookImg,bookSrc,numOfRead) values(#{bookId},#{title},#{author},#{infor},#{genre},#{childGenre},#{finalState},#{newChapter},#{bookImg},#{bookSrc},#{numOfRead})
+    </insert>
+
+</mapper>

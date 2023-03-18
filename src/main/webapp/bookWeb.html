@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>源的书屋</title>
+    <script src="http://localhost:8080/Bookweb/layui/layui.js"></script>
+    <link rel="stylesheet" href="http://localhost:8080/Bookweb/layui/css/layui.css" tppabs="http://localhost:8080/Bookweb/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/style1.css"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<form id="form1" runat="server">
+    <!-- header头部模块开始 -->
+    <div class="header w">
+        <!-- logo -->
+        <div class="logo">
+            <img src="images/logo.png" alt=""/>
+        </div>
+        <!-- nav -->
+        <div class="nav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">排行</a></li>
+                <li><a href="#">全部作品</a></li>
+            </ul>
+        </div>
+        <!-- search -->
+        <div class="search">
+            <input type="text" value="输入关键词"/>
+            <button></button>
+            <!--button的逻辑没有实现-->
+        </div>
+        <!-- user -->
+        <div class="user">
+            <img src="images/user.png" alt="" style="vertical-align: middle;"/>
+            用户名
+        </div>
+    </div>
+    <!-- header头部模块结束 -->
+    <!-- banner 部分start -->
+    <div class="banner">
+
+        <!--轮播图-->
+
+        <div class="w">
+            <!-- 左侧 subnav  -->
+            <div class="subnav">
+                <ul>
+                    <li class="menu_item"><a href="#">玄幻修真 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">都市异能 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">仙侠奇幻 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">游戏智能 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">衍生同人 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">历史纪实 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">逻辑推理 <i>></i></a></li>
+                    <li class="menu_item"><a href="#">悬疑惊悚 <i>></i></a></li>
+                </ul>
+            </div>
+            <!-- 右侧 course -->
+
+            <!--未实现的功能当用户点击图书之后，把书加到历史之中，然后生成一个视图来作为首页的显示的历史记录-->
+            <div class="course">
+                <div class="course-hd">阅览记录</div>
+                <div class="course-bd">
+                    <ul>
+                        <li>
+                            <h4>继续阅读 斗破苍穹</h4>
+                            <p>正在阅读-89章</p>
+                        </li>
+                        <li>
+                            <h4>继续阅读 斗破苍穹</h4>
+                            <p>正在阅读-89章</p>
+                        </li>
+                        <li>
+                            <h4>继续阅读 斗破苍穹</h4>
+                            <p>正在阅读-89章</p>
+                        </li>
+                    </ul>
+                    <a href="#" class="all">全部历史</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner 部分end -->
+
+    <!-- goods START -->
+    <div class="goods w">
+        <h3> 精品推荐 </h3>
+        <div class="goods-item">
+            | <a href="https://book.qidian.com/info/1209977">斗破苍穹</a> | <a href="https://book.qidian.com/info/1115277">斗罗大陆</a> | <a href="https://book.qidian.com/info/1027339371">深空彼岸</a> | <a href="https://book.qidian.com/info/1025990049">术士手册</a> | <a href="https://book.qidian.com/info/1639199">吞噬星空</a> | <a href="https://book.qidian.com/info/1028423934">隐秘之首</a>
+        </div>
+        <div class="mod"> 我的兴趣 </div>
+    </div>
+    <!-- goods END -->
+
+    <!-- box start -->
+    <div class="box w">
+        <div class="box-hd">
+            <h3>精品推荐</h3>
+            <a href="#">查看全部</a>
+        </div>
+
+        <!-- 此地方一定要清除浮动 -->
+
+        <div class="box-bd clearfix">
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/0702dac86fe0cef06660a4f3d300a54b.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/d25371ade907bbed36530b74cdbc1496.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>我有一座野生动物园</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/a9bcf91edd0fe200cd184430bb512a60.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/d9d63115f6842b89f869bdd5816dac33.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/4f37fc88f46fe9b63f90ce820dcaaf9d.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/8234382547347331c22ee886d96a3ed2.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/86a2e6e7fad58fb734ba3baa0fe7bd8c.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/8235cd44c792b84203d22a7f70b37771.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/b33e99f83deedb593ec2e5da885e6093.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="box_li">
+                            <div class="box_img">
+                                <img src='https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/1995063bd070e48515fba16bfa2b1db5.jpg' alt="" class="pic" />
+                            </div>
+                            <h4>从拔出石中剑开始</h4>
+                            <h4>类型: 玄幻小说</h4>
+                            <p>
+                                <span>新品</span>
+                                8888人正在阅读
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- box end -->
+
+</form>
+<!-- footer start -->
+<div class="footer">
+    <div class="w">
+        <!-- 左侧 -->
+        <div class="copyright">
+            <img src="images/logo.png" alt=""/> <p>浩源的书屋致力推广中国优秀作品，是青年人阅读刊物的优秀网站<br/> ? 2021年XTCG Inc.保留所有权利。-沪ICP备xxxxxxxxx号</p>
+            <a href="#" class="app"> 下载 app</a>
+        </div>
+        <!-- 右侧 -->
+        <div class="links">
+            <dl>
+                <dt>关于浩源的书屋</dt>
+                <dd><a href="#">关于</a></dd>
+                <dd><a href="#">管理团队</a></dd>
+                <dd><a href="#">工作机会</a></dd>
+                <dd><a href="#">客户服务</a></dd>
+                <dd><a href="#">帮助</a></dd>
+            </dl>
+            <dl>
+                <dt>新手指南</dt>
+                <dd><a href="#">如何注册</a></dd>
+                <dd><a href="#">如何阅览</a></dd>
+                <dd><a href="#">如何保存到我的书架</a></dd>
+                <dd><a href="#">积分是什么</a></dd>
+            </dl>
+
+            <dl>
+                <dt>合作伙伴</dt>
+                <dd><a href="#">合作机构</a></dd>
+                <dd><a href="#">合作网站</a></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<!-- footer end -->
+</body>
+</html>

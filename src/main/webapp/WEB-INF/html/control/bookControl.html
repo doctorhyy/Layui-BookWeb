@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="http://localhost:8080/Bookweb/layui/css/layui.css">
+</head>
+<body>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="submit">提交</a>
+</script>
+<script src="http://localhost:8080/Bookweb/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script>
+    layui.use(['table','jquery','util'], function(){
+        var table = layui.table;
+        var $ =layui.$;
+        $(function (){
+            $.ajax({
+                url: 'http://localhost:8080/Bookweb/book/selectallbasic.do',
+                type:"post",
+                success:function (responseText){
+                    table.render({
+                        elem: '#test'
+                        ,page: true
+                        ,method:'post'
+                        ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+                        ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                            title: '提示'
+                            ,layEvent: 'LAYTABLE_TIPS'
+                            ,icon: 'layui-icon-tips'
+                        }]
+                        ,data:responseText
+                        ,title: '图书数据表'
+                        ,cols: [[
+                            {type: 'checkbox', fixed: 'left'}
+                            ,{field:'bookId', width:'5%', title: 'ID', sort: true}
+                            ,{field:'title', width:'10%', title: '书名',sort: true}
+                            ,{field:'author', width:'7%', title: '作者', sort: true}
+                            ,{field:'genre', width:'5%', title: '类型',sort: true}
+                            ,{field:'childGenre', width:'5%', title: '子类型',sort: true}
+                            ,{field:'finalState', width:'5%', title: '目前状态',sort: true}
+                            ,{field:'numOfRead', width:'5%', title: '阅读数量',sort: true}
+                            ,{field:'newChapter', width:'10%', title: '最新章节'}
+                            ,{field:'infor', width:'10%', title: '简介'}
+                            ,{field:'bookImg', width:'10%', title: '图片地址'}
+                            ,{field:'bookSrc', width:'10%', title: '资源地址'}
+                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+                        ]]
+                    });
+
+                }
+            })
+        })
+
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            };
+        });
+
+        //监听行工具事件
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    $.ajax({
+                        url: 'http://localhost:8080/Bookweb/book/delete.do',
+                        type:"post",
+                        data:{"id":obj.data.userId},
+                        success:function (responseText){
+                            if (responseText.trim()=="success"){
+                                alert("删除成功");
+                            }else{
+                                alert("删除失败");
+                            }
+                        }
+                    })
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.prompt({
+                    formType: 2
+                    ,value: data.bookSrc
+                }, function(value, index){
+                    obj.update({
+                        bookSrc: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.bookImg
+                }, function(value, index){
+                    obj.update({
+                        bookImg: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.infor
+                }, function(value, index){
+                    obj.update({
+                        infor: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.newChapter
+                }, function(value, index){
+                    obj.update({
+                        newChapter: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.numOfRead
+                }, function(value, index){
+                    obj.update({
+                        numOfRead: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.finalState
+                }, function(value, index){
+                    obj.update({
+                        finalState: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.childGenre
+                }, function(value, index){
+                    obj.update({
+                        childGenre: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.genre
+                }, function(value, index){
+                    obj.update({
+                        genre: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.author
+                }, function(value, index){
+                    obj.update({
+                        author: value
+                    });
+                    layer.close(index);
+                });
+                layer.prompt({
+                    formType: 2
+                    ,value: data.title
+                }, function(value, index){
+                    obj.update({
+                        title: value
+                    });
+                    layer.close(index);
+                });
+            }else if(obj.event === 'submit'){
+                layer.confirm('确定提交修改么', function(index){
+                    var bookId = obj.data.bookId;
+                    var title = obj.data.title;
+                    var author  = obj.data.author;
+                    var genre = obj.data.genre;
+                    var childGenre = obj.data.childGenre;
+                    var finalState = obj.data.finalState;
+                    var numOfRead = obj.data.numOfRead;
+                    var newChapter = obj.data.newChapter;
+                    var infor = obj.data.infor;
+                    var bookImg = obj.data.bookImg;
+                    var bookSrc = obj.data.bookSrc;
+                    $.ajax({
+                        url:'http://localhost:8080/Bookweb/book/update.do',
+                        type:"post",
+                        data:{"bookId":bookId,"title":title,"author":author,"genre":genre,"childGenre":childGenre,"finalState":finalState,
+                              "numOfRead":numOfRead,"newChapter":newChapter,"infor":infor,"bookImg":bookImg,"bookSrc":bookSrc},
+                        success:function (responseText){
+                        if (responseText.trim()=="success"){
+                            layer.alert("修改成功");
+                        }else{
+                            layer.alert("修改失败");
+                        }
+                    }
+                    })
+                    layer.close(index);
+                });
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
